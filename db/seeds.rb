@@ -7,3 +7,12 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+require 'json'
+
+file = File.read(Rails.root.join('db', 'dataset.json'))
+data = JSON.parse(file)
+
+data['rows'].each do |row|
+  Prompt.create!(prompt_idx: row['row_idx'], text: row['row']['Prompt'])
+end
