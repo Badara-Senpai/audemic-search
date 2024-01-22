@@ -1,0 +1,14 @@
+<% if results.any? %>
+  <div class="search-results">
+    <% results.each do |result| %>
+      <div class="search-result-item">
+        <p>
+          <%= result.prompt_idx %>
+          <%= result.text %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>No results found.</p>
+<% end %>
