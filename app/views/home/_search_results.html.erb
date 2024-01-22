@@ -1,14 +1,17 @@
+<span class="text mb-4"> <%= results.count %> prompts matched</span>
+
 <% if results.any? %>
   <div class="search-results">
     <% results.each do |result| %>
-      <div class="search-result-item">
-        <p>
-          <%= result.prompt_idx %>
-          <%= result.text %>
-        </p>
+      <div class="d-flex flex-row justify-content-between mb-3">
+        <div class="d-flex flex-column p-3">
+          <p class="mb-1"><%= result.text %></p>
+        </div>
       </div>
     <% end %>
   </div>
 <% else %>
-  <p>No results found.</p>
+  <div class="d-flex align-items-center justify-content-center" style="height:200px;">
+    <p class="text-muted">No results found.</p>
+  </div>
 <% end %>

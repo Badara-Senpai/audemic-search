@@ -1,6 +1,17 @@
-<form data-controller="search">
-  <input type="text" data-search-target="input" data-action="keyup->search#search">
-  <div data-search-target="results">
+<div class="container d-flex justify-content-center" data-controller="search">
+  <div class="card mt-5 p-4">
+    <form>
+      <div class="input-group mb-3">
+        <input class="form-control" type="text" data-search-target="input" data-action="keyup->search#search">
+        <div class="input-group-append"><button class="btn btn-primary"><i class="fas fa-search"></i></button></div>
+      </div>
+    </form>
 
+
+    <div class="overflow-auto prompt-results" data-search-target="results">
+      <div class="d-flex align-items-center justify-content-center" style="height:200px;">
+        <p class="text-muted">Search for prompt</p>
+      </div>
+    </div>
   </div>
-</form>
+</div>
