@@ -15,7 +15,11 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  password: root
+  host: <%= ENV['POSTGRES_HOST'] %>
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+#  username: postgres
+#  password: root
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -80,6 +84,6 @@ test:
 #
 production:
   <<: *default
-  database: audemic_search_production
-  username: audemic_search
-  password: <%= ENV["AUDEMIC_SEARCH_DATABASE_PASSWORD"] %>
+  database: <%= ENV['POSTGRES_DB'] %>
+#  username: <%#= ENV['POSTGRES_USER'] %>
+#  password: <%#= ENV["POSTGRES_PASSWORD"] %>
