@@ -19,8 +19,10 @@ services:
       - discovery.type=single-node
     ports:
       - "9200:9200"
+      - "9300:9300"
     volumes:
       - elasticsearch_data:/usr/share/elasticsearch/data
+      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
   app:
     build: .
     command: "./bin/rails server"
@@ -42,6 +44,7 @@ services:
       - elasticsearch
     ports:
       - "3000:3000"
+    restart: on-failure
 
 volumes:
   postgres_data: {}

@@ -14,5 +14,9 @@ file = File.read(Rails.root.join('db', 'dataset.json'))
 data = JSON.parse(file)
 
 data['rows'].each do |row|
-  Prompt.create!(prompt_idx: row['row_idx'], text: row['row']['Prompt'])
+  Prompt.find_or_create_by!(prompt_idx: row['row_idx']) do |prompt|
+    prompt.text = row['row']['Prompt']
+  end
 end
+
+Prompt.reindex
